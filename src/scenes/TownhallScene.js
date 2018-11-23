@@ -31,6 +31,7 @@ class TownhallScene extends WorldScene {
     if (messageBox) {
       if (this.optionA.isDown) {
         messageBox.remove();
+        this.makeRequest();
         this.next_level(this.chosen_scene);
       } else if (this.optionB.isDown) {
         messageBox.remove();
@@ -45,6 +46,13 @@ class TownhallScene extends WorldScene {
     }
 
   }
+
+  makeRequest(){
+    $.ajax('http://localhost:8080/api/users/scores', {method: 'GET'}).then((data) => {
+      console.log(data);
+    })
+  }
+
   next_level(level) {
     if (this.data && this.data.next_level === 'level3') {
       this.scene.start('BootScene', {scene: 'level4'})
