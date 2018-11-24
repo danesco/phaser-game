@@ -48,7 +48,7 @@ class TownhallScene extends WorldScene {
   }
 
   makeRequest(){
-    $.ajax('http://localhost:8080/api/users/scores', {method: 'GET'}).then((data) => {
+    $.ajax('https://bajo-island-api.herokuapp.com/api/users/scores', {method: 'GET'}).then((data) => {
       console.log(data);
     })
   }
